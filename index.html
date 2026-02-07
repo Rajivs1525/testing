@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Important Question 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Cute Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #e6ccff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: #fffaf5;
+      padding: 32px 28px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      animation: popIn 0.6s ease;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    button {
+      background: #ff85b3;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 6px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 15px rgba(255, 133, 179, 0.4);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 133, 179, 0.6);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-110vh);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen 1 -->
+  <div class="card" id="screen1">
+    <h1>⚠️ Important Question ⚠️</h1>
+    <p>This app has been thinking about you 💭</p>
+    <button onclick="nextScreen(2)">Continue</button>
+  </div>
+
+  <!-- Screen 2 -->
+  <div class="card hidden" id="screen2">
+    <p>
+      Hi Reethuuuu😊<br><br>
+      I was trying to think of a cool way to ask you something…<br>
+      So I did what I do best 😌
+    </p>
+    <button onclick="nextScreen(3)">Okay now I’m curious 👀</button>
+  </div>
+
+  <!-- Screen 3 -->
+  <div class="card hidden" id="screen3">
+    <p>
+      After extensive research,<br>
+      deep thinking,<br>
+      and consulting my heart ❤️
+    </p>
+    <h1>Will you be my Valentine? 🌹</h1>
+    <button onclick="nextScreen(4)">Yes 💕</button>
+    <button onclick="nextScreen(4)">Obviously yes 🙄</button>
+  </div>
+
+  <!-- Screen 4 -->
+  <div class="card hidden" id="screen4">
+    <h1>YAY 🥰</h1>
+    <p>
+      It’s a date then 💖<br>
+      Feb 14 — just you and me.
+    </p>
+    <p style="font-size: 14px; opacity: 0.8;">
+      I’m really glad it’s you.
+    </p>
+  </div>
+
+  <script>
+    function nextScreen(n) {
+      document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+      document.getElementById('screen' + n).classList.remove('hidden');
+    }
+
+    // Floating hearts generator
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }, 600);
+  </script>
+
+</body>
+</html>
